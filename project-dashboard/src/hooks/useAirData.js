@@ -1,12 +1,15 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import axios from 'axios'
+
+const REFRESH_INTERVAL = 60 * 60 * 1000 // 1 ชั่วโมง
 
 export default function useAirData() {
   const [stations, setStations] = useState([])
   const [loading, setLoading]   = useState(true)
   const [error, setError]       = useState(null)
+  const [lastUpdated, setLastUpdated] = useState(null) // เพิ่ม: รู้ว่าอัปเดตล่าสุดเมื่อไหร่
 
-  useEffect(() => {
+  const fetchData = useCallback(() => {
     axios.get('/air4thai/services/getNewAQI_JSON.php')
       .then(res => {
         const data = (res.data?.stations ?? [])
@@ -22,7 +25,9 @@ export default function useAirData() {
             time: `${s.AQILast?.date ?? ''} ${s.AQILast?.time ?? ''}`.trim(),
           }))
         setStations(data)
+        setLastUpdated(new Date())
         setLoading(false)
+        setError(null)
       })
       .catch(err => {
         setError(err.message)
@@ -30,5 +35,11 @@ export default function useAirData() {
       })
   }, [])
 
-  return { stations, loading, error }
+  useEffect(() => {
+    fetchData()
+    const interval = setInterval(fetchData, REFRESH_INTERVAL)
+    return () => clearInterval(interval) // cleanup
+  }, [fetchData])
+
+  return { stations, loading, error, lastUpdated, refetch: fetchData }
 }

@@ -9,13 +9,8 @@ export default defineConfig({
         target: 'http://air4thai.pcd.go.th',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/air4thai/, '')
-      },
-      '/openaq': {
-        target: 'https://api.openaq.org',
-        changeOrigin: true,
-        secure: true,
-        rewrite: (path) => path.replace(/^\/openaq/, '')
       }
+      // ตัด openaq ออก
     }
   }
 })
