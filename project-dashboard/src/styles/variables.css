@@ -1,0 +1,59 @@
+/* ============================================================
+   variables.css — Design Tokens
+   ============================================================ */
+
+:root {
+  /* BRAND */
+  --color-primary:       #1158e5;
+  --color-primary-light: rgba(17, 88, 229, 0.15);
+
+  /* NAVIGATION */
+  --nav-bg:              #1158e5;
+  --nav-icon-color:      rgba(255, 255, 255, 0.6);
+  --nav-active-bg:       rgba(255, 255, 255, 0.15);
+  --nav-active-color:    #ffffff;
+
+  /* AQI STATUS */
+  --aqi-good:            #00c853;
+  --aqi-moderate:        #ffeb3b;
+  --aqi-sensitive:       #ff9800;
+  --aqi-unhealthy:       #f44336;
+  --aqi-very-unhealthy:  #9c27b0;
+  --aqi-hazardous:       #7e0023;
+
+  /* SURFACE & BORDER */
+  --surface:             #ffffff;
+  --surface-muted:       #f3f4f6;
+  --border:              #e5e7eb;
+  --social-bg:           #f9fafb;
+
+  /* TEXT */
+  --text-primary:        #111827;
+  --text-secondary:      #6b7280;
+  --text-muted:          #9ca3af;
+  --text-heading:        #111827;
+
+  /* ACCENT */
+  --accent:              #1158e5;
+  --accent-bg:           rgba(17, 88, 229, 0.08);
+  --accent-border:       rgba(17, 88, 229, 0.4);
+
+  /* SHADOW */
+  --shadow-sm:           0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow:              0 4px 12px rgba(0, 0, 0, 0.12);
+  --shadow-md:           0 8px 24px rgba(0, 0, 0, 0.14);
+
+  /* SIZING */
+  --sidebar-width:       60px;
+  --topbar-height:       48px;
+
+  /* BORDER RADIUS */
+  --radius-sm:           6px;
+  --radius:              8px;
+  --radius-md:           10px;
+  --radius-lg:           12px;
+
+  /* TRANSITION */
+  --transition-fast:     0.15s ease;
+  --transition:          0.3s ease;
+}
